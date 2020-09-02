@@ -70,4 +70,4 @@ Out_hist = model(Ini_hist, Par, For_hist
     ,var_keep=var_keep)
 #with xr.open_dataset('results/SSP_fb_Out_hist.nc') as TMP: Out_hist = TMP.load()
 filename = 'base'
-Out_hist.to_netcdf('results/' + 'hist_' + filename + '_Out_hist.nc', encoding={var:{'zlib':True, 'dtype':np.float32} for var in Out_hist})
+Out_hist.to_netcdf('results/'+ filename + '_Out_hist.nc', encoding={var:{'zlib':True, 'dtype':np.float32} for var in Out_hist})
