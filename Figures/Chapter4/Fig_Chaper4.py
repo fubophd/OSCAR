@@ -93,6 +93,7 @@ ax0.legend(loc='upper left')
 ax0.set_xlim([1850,2014])
 ax0.set_xlabel('年份')
 ax0.set_ylabel('辐射强迫($W/m^2$)')
+ax0.set_title('a',fontweight='bold')
 
 ax0 = plt.subplot2grid((2,2),(0,1),colspan=1)
 rf = 'RF_CH4'
@@ -109,6 +110,7 @@ ax0.legend(loc='upper left')
 ax0.set_xlim([1850,2014])
 ax0.set_xlabel('年份')
 ax0.set_ylabel('辐射强迫($W/m^2$)')
+ax0.set_title('b',fontweight='bold')
 
 ax0 = plt.subplot2grid((2,2),(1,0),colspan=1)
 rf = 'RF_N2O'
@@ -125,6 +127,7 @@ ax0.legend(loc='upper left')
 ax0.set_xlim([1850,2014])
 ax0.set_xlabel('年份')
 ax0.set_ylabel('辐射强迫($W/m^2$)')
+ax0.set_title('c',fontweight='bold')
 
 ax0 = plt.subplot2grid((2,2),(1,1),colspan=1)
 rf = 'RF_Xhalo'
@@ -142,9 +145,173 @@ ax0.legend(loc='upper left')
 ax0.set_xlim([1850,2014])
 ax0.set_xlabel('年份')
 ax0.set_ylabel('辐射强迫($W/m^2$)')
+ax0.set_title('d',fontweight='bold')
+
+
+f.tight_layout()
 f.savefig(filepath+filename+fileformat,dpi=300)
 
+# %%
+############################
 '''
-上面的不确定性还没加呢
+短生命物质的辐射强迫与不确定性
 '''
+filepath = './'
+filename = '4.3_RFSLCF'
+fileformat = '.jpg'
+############################
+f=plt.figure(figsize=[8,8])
+
+alpha = 0.5
+
+ax0 = plt.subplot2grid((3,3),(0,0),colspan=1)
+rf = 'RF_SO4'
+data = np.nanmean(base_Out_hist[rf],1)
+data_std = np.nanstd(base_Out_hist[rf],1)
+ax0.plot(base_Out_hist.year,data,
+         color=RF_color[RF_list.index(rf)],
+         linestyle=RF_linestyle[RF_list.index(rf)],
+         linewidth=3,label='$'+RF_label[RF_list.index(rf)]+'$')
+ax0.fill_between(base_Out_hist.year,data-data_std,data+data_std,
+                 color=RF_color[RF_list.index(rf)],
+                 alpha=alpha,label='1倍标准差')
+ax0.legend(loc='lower left')
+ax0.set_xlim([1850,2014])
+ax0.set_xlabel('年份')
+ax0.set_ylabel('辐射强迫($W/m^2$)')
+ax0.set_title('a',fontweight='bold')
+
+ax0 = plt.subplot2grid((3,3),(0,1),colspan=1)
+rf = 'RF_BC'
+data = np.nanmean(base_Out_hist[rf],1)
+data_std = np.nanstd(base_Out_hist[rf],1)
+ax0.plot(base_Out_hist.year,data,
+         color=RF_color[RF_list.index(rf)],
+         linestyle=RF_linestyle[RF_list.index(rf)],
+         linewidth=3,label='$'+RF_label[RF_list.index(rf)]+'$')
+ax0.fill_between(base_Out_hist.year,data-data_std,data+data_std,
+                 color=RF_color[RF_list.index(rf)],
+                 alpha=alpha,label='1倍标准差')
+ax0.legend(loc='upper left')
+ax0.set_xlim([1850,2014])
+ax0.set_xlabel('年份')
+ax0.set_ylabel('辐射强迫($W/m^2$)')
+ax0.set_title('b',fontweight='bold')
+
+
+ax0 = plt.subplot2grid((3,3),(0,2),colspan=1)
+rf = 'RF_POA'
+data = np.nanmean(base_Out_hist[rf],1)
+data_std = np.nanstd(base_Out_hist[rf],1)
+ax0.plot(base_Out_hist.year,data,
+         color=RF_color[RF_list.index(rf)],
+         linestyle=RF_linestyle[RF_list.index(rf)],
+         linewidth=3,label='$'+RF_label[RF_list.index(rf)]+'$')
+ax0.fill_between(base_Out_hist.year,data-data_std,data+data_std,
+                 color=RF_color[RF_list.index(rf)],
+                 alpha=alpha,label='1倍标准差')
+ax0.legend(loc='lower left')
+ax0.set_xlim([1850,2014])
+ax0.set_xlabel('年份')
+ax0.set_ylabel('辐射强迫($W/m^2$)')
+ax0.set_title('c',fontweight='bold')
+
+ax0 = plt.subplot2grid((3,3),(0,2),colspan=1)
+rf = 'RF_POA'
+data = np.nanmean(base_Out_hist[rf],1)
+data_std = np.nanstd(base_Out_hist[rf],1)
+ax0.plot(base_Out_hist.year,data,
+         color=RF_color[RF_list.index(rf)],
+         linestyle=RF_linestyle[RF_list.index(rf)],
+         linewidth=3,label='$'+RF_label[RF_list.index(rf)]+'$')
+ax0.fill_between(base_Out_hist.year,data-data_std,data+data_std,
+                 color=RF_color[RF_list.index(rf)],
+                 alpha=alpha,label='1倍标准差')
+ax0.legend(loc='lower left')
+ax0.set_xlim([1850,2014])
+ax0.set_xlabel('年份')
+ax0.set_ylabel('辐射强迫($W/m^2$)')
+ax0.set_title('d',fontweight='bold')
+
+
+ax0 = plt.subplot2grid((3,3),(1,0),colspan=1)
+rf = 'RF_NO3'
+data = np.nanmean(base_Out_hist[rf],1)
+data_std = np.nanstd(base_Out_hist[rf],1)
+ax0.plot(base_Out_hist.year,data,
+         color=RF_color[RF_list.index(rf)],
+         linestyle=RF_linestyle[RF_list.index(rf)],
+         linewidth=3,label='$'+RF_label[RF_list.index(rf)]+'$')
+ax0.fill_between(base_Out_hist.year,data-data_std,data+data_std,
+                 color=RF_color[RF_list.index(rf)],
+                 alpha=alpha,label='1倍标准差')
+ax0.legend(loc='lower left')
+ax0.set_xlim([1850,2014])
+ax0.set_xlabel('年份')
+ax0.set_ylabel('辐射强迫($W/m^2$)')
+ax0.set_title('e',fontweight='bold')
+
+
+ax0 = plt.subplot2grid((3,3),(1,1),colspan=1)
+rf = 'RF_SOA'
+data = np.nanmean(base_Out_hist[rf],1)
+data_std = np.nanstd(base_Out_hist[rf],1)
+ax0.plot(base_Out_hist.year,data,
+         color=RF_color[RF_list.index(rf)],
+         linestyle=RF_linestyle[RF_list.index(rf)],
+         linewidth=3,label='$'+RF_label[RF_list.index(rf)]+'$')
+ax0.fill_between(base_Out_hist.year,data-data_std,data+data_std,
+                 color=RF_color[RF_list.index(rf)],
+                 alpha=alpha,label='1倍标准差')
+ax0.legend(loc='lower left')
+ax0.set_xlim([1850,2014])
+ax0.set_xlabel('年份')
+ax0.set_ylabel('辐射强迫($W/m^2$)')
+ax0.set_title('f',fontweight='bold')
+
+
+ax0 = plt.subplot2grid((3,3),(1,2),colspan=1)
+rf = 'RF_O3t'
+data = np.nanmean(base_Out_hist[rf],1)
+data_std = np.nanstd(base_Out_hist[rf],1)
+ax0.plot(base_Out_hist.year,data,
+         color=RF_color[RF_list.index(rf)],
+         linestyle=RF_linestyle[RF_list.index(rf)],
+         linewidth=3,label='$'+RF_label[RF_list.index(rf)]+'$')
+ax0.fill_between(base_Out_hist.year,data-data_std,data+data_std,
+                 color=RF_color[RF_list.index(rf)],
+                 alpha=alpha,label='1倍标准差')
+ax0.legend(loc='upper left')
+ax0.set_xlim([1850,2014])
+ax0.set_xlabel('年份')
+ax0.set_ylabel('辐射强迫($W/m^2$)')
+ax0.set_title('g',fontweight='bold')
+
+
+ax0 = plt.subplot2grid((3,3),(2,0),colspan=1)
+rf = 'RF_O3s'
+data = np.nanmean(base_Out_hist[rf],1)
+data_std = np.nanstd(base_Out_hist[rf],1)
+ax0.plot(base_Out_hist.year,data,
+         color=RF_color[RF_list.index(rf)],
+         linestyle=RF_linestyle[RF_list.index(rf)],
+         linewidth=3,label='$'+RF_label[RF_list.index(rf)]+'$')
+ax0.fill_between(base_Out_hist.year,data-data_std,data+data_std,
+                 color=RF_color[RF_list.index(rf)],
+                 alpha=alpha,label='1倍标准差')
+ax0.legend(loc='lower left')
+ax0.set_xlim([1850,2014])
+ax0.set_xlabel('年份')
+ax0.set_ylabel('辐射强迫($W/m^2$)')
+ax0.set_title('h',fontweight='bold')
+
+
+f.tight_layout()
+f.savefig(filepath+filename+fileformat,dpi=300)
+
+# %%
+
+
+
+
 
