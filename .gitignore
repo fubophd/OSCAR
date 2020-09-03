@@ -1,9 +1,14 @@
 # Files TO IGNORE:
+#===================
+# .something
+.vscode/
+
 #====================
 # Results:
 
 parameters/
 results/
+Figures/Chapter4/*.jpg
 
 #====================
 # Documents:
